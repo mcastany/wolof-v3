@@ -425,14 +425,16 @@ nav.main-navigation ul li a div {
   vertical-align: middle;
 }
 
-.iteration-title {
+.iteration-title,
+.team-member-title {
   text-align: center;
   height: 20px;
   font-weight: bold;
 }
 
 .project-description,
-.project-numbers {
+.project-numbers,
+.team {
   margin:10px;
 }
 
@@ -446,4 +448,14 @@ nav.main-navigation ul li a div {
   font-weight: bold;
 }
 
+.team-member-image{
+  background-image: url('../images/template-person.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  padding-left: 60px;
+  margin-bottom: 10px;
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+}
 /*END DATE IN SUMMARY*/

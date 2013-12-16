@@ -55,10 +55,10 @@
 					</div>
 				</div>
 				<div class="team">
-					<p>The team </p>
-					<ul>
-						<li ng-repeat="member in project.team"><span> {{ member.name }}</span></li>
-					</ul>
+					<div class="team-member-title">Team</div>
+					<div class="team-member-image" ng-repeat="member in project.team">
+						{{ member.name }}
+					</div>
 				</div>
 			</div>
             <div class="table-cell second-row">
