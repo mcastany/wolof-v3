@@ -43,7 +43,7 @@ angular.module('wolofApp', [
       //Shows the current assigned stories excluding blocked and completed
       .when('/wolof/:projectName/sod', {
         templateUrl: 'views/sod.html',
-        controller: 'SODCtrl'
+        controller: 'SodCtrl'
       })
       .otherwise({
         redirectTo: '/'
