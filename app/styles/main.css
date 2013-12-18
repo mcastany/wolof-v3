@@ -28,6 +28,10 @@ footer {
 
 }
 
+.inline {
+  display: inline;
+}
+
 .table {
   display: table;
   width: 100%;

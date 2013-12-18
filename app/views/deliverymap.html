@@ -14,12 +14,7 @@
 			<div> {{ it.to | date:'mediumDate'}}</div>
 		</div>
 		<div class="iteration-content">
-			<div class="feature"  ng-class="feature.status" ng-repeat="feature in it.features" ng-dblclick="feature.editmode = true">
-				<div class="close-border avoid-selection" ng-show="enableRemove" ng-click="removeFeature(it.number, feature)">X</div>
-				<span ng-hide="feature.editmode">{{feature.name}}</span>
-				<input ng-show="feature.editmode" type="text" ng-model="feature.name" ng-enter="feature.editmode = false" />
-				<a ng-show="feature.editmode"  ng-click="feature.editmode = false"><i class="fa fa-check"></i></a>
-			</div>
+			<div class="feature"  ng-class="feature.status" ng-repeat="feature in it.features" w-editable remove-handler="removeFeature(it.number, feature)" remove="enableRemove" property="feature.name"></div>
 			<div class="feature template avoid-selection" ng-click="addFeature(it.number)"> Create Feature</div>
 		</div>
 	</div>
