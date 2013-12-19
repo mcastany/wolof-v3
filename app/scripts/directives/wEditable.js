@@ -2,8 +2,11 @@
 
 angular.module('wolofApp').directive('wEditable', function () {
   return {
-    template: '<div ng-dblclick="edit = true">' +
-        '<div class="close-border avoid-selection" ng-show="remove" ng-click="removeHandler()">X</div>' +
+    template:
+      '<div ng-dblclick="edit = true">' +
+        '<div class="closearea">' +
+          '<div class="close-border avoid-selection" ng-click="removeHandler()">X</div>' +
+        '</div>' +
         '<span ng-hide="edit">{{property}}</span><input ng-show="edit" type="text" ng-model="property" ng-enter="edit = false" />' +
         '<a ng-show="edit"  ng-click="edit = false"><i class="fa fa-check"></i></a>' +
       '</div>',
@@ -12,7 +15,6 @@ angular.module('wolofApp').directive('wEditable', function () {
     scope: {
       property: '=',
       edit: '@',
-      remove: '=',
       removeHandler: '&'
     },
     link: function (scope, element) {

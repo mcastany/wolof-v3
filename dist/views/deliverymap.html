@@ -1,28 +1,25 @@
-<div class="button-row avoid-selection"> 
-	<div class="pure-button-secondary" ng-class="{pressed: enableRemove}" ng-click="enableRemove = !enableRemove">
-		<span ng-show="enableRemove">Disable</span><span ng-hide="enableRemove">Enable</span> Remove
-	</div>
-</div>
-<div class="deliverymap">
-	<div class="iteration" ng-repeat="it in iterations">
-		<div class="iteration-header avoid-selection" ng-class="{selected: (it.number == iterationNumber)}" ng-dblclick="navigateToBacklog(it.number)"> Iteration #{{ it.number }}</div>
-		<div class="iteration-subheader">
-			<div> {{ it.from | date:'mediumDate'}}</div>
-			<div> - </div>
-			<div> {{ it.to | date:'mediumDate'}}</div>
+<div class="delivery-content">
+	<div class="deliverymap">
+		<div class="iteration" ng-repeat="it in iterations">
+			<div class="iteration-header avoid-selection" ng-class="{selected: (it.number == iterationNumber)}" ng-dblclick="navigateToBacklog(it.number)"> Iteration #{{ it.number }}</div>
+			<div class="iteration-subheader">
+				<div> {{ it.from | date:'mediumDate'}}</div>
+				<div> - </div>
+				<div> {{ it.to | date:'mediumDate'}}</div>
+			</div>
+			<div class="iteration-content">
+				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" w-editable="" remove-handler="removeFeature(it.number, feature)" property="feature.name"></div>
+				<div class="feature template avoid-selection" ng-click="addFeature(it.number)">Create Feature</div>
+			</div>
 		</div>
-		<div class="iteration-content">
-			<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" w-editable="" remove-handler="removeFeature(it.number, feature)" remove="enableRemove" property="feature.name"></div>
-			<div class="feature template avoid-selection" ng-click="addFeature(it.number)"> Create Feature</div>
-		</div>
-	</div>
-	<div class="iteration">
-		<div class="iteration-header iteration-template avoid-selection" ng-click="addIteration()">
-			<i class="fa fa-plus"></i>		
+		<div class="iteration">
+			<div class="iteration-header iteration-template avoid-selection" ng-click="addIteration()">
+				<i class="fa fa-plus"></i>		
+			</div>
 		</div>
 	</div>
-</div>
 
-<div class="iteration-references">
+	<div class="iteration-references">
 
+	</div>
 </div>
