@@ -5,12 +5,11 @@
 			<div class="iteration-subheader">
 				<div> {{ it.from | date:'mediumDate'}}</div>
 				<div> - </div>
-				<div> {{ it.to | date:'mediumDate'}}</div>
-			</div>
+				<div> {{ it.to | date:'mediumDate'}}</div></div>
 			<div class="iteration-content" ui-sortable="" ng-model="it.features">
-				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" w-editable="" remove-handler="removeFeature(it.number, feature)" property="feature.name">
-					
-				</div>
+				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" w-editable="" remove-handler="removeFeature(it.number, feature)" property="feature.name"></div>
+			</div>
+			<div class="iteration-content">
 				<div class="feature template avoid-selection" ng-click="addFeature(it.number)">Create Feature</div>
 			</div>
 		</div>
