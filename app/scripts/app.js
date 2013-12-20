@@ -4,7 +4,8 @@ angular.module('wolofApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.sortable'
 ])
   .config(function ($routeProvider) {
     $routeProvider

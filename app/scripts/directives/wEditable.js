@@ -4,7 +4,7 @@ angular.module('wolofApp').directive('wEditable', function () {
   return {
     template:
       '<div ng-dblclick="edit = true">' +
-        '<div class="closearea">' +
+        '<div class="closearea" ng-show="!edit">' +
           '<div class="close-border avoid-selection" ng-click="removeHandler()">X</div>' +
         '</div>' +
         '<span ng-hide="edit">{{property}}</span><input ng-show="edit" type="text" ng-model="property" ng-enter="edit = false" />' +
