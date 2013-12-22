@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('wolofApp').controller('SodCtrl', ['$scope', '$routeParams', function () {
-	
+angular.module('wolofApp').controller('SodCtrl', ['$scope', '$stateParams', '$rootScope', function ($scope, $rootScope) {
+	$rootScope.route = 'sod';
 }]);

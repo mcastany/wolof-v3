@@ -1,0 +1,32 @@
+<nav class="main-navigation" ng-controller="NavigationCtrl">
+      <ul>
+        <li ng-class="{selected: (route=='summary')}">
+          <a ng-href="#/wolof/grays">
+            <i class="fa fa-desktop fa-2x"></i>
+            <div>Summary</div>
+          </a>
+        </li>
+        <li ng-class="{selected: (route=='deliverymap')}">
+          <a ng-href="#/wolof/grays/deliverymap">
+            <i class="fa fa-calendar fa-2x"></i> 
+            <div>Delivery Map</div>
+          </a>
+        </li>
+        <li ng-class="{selected: (route=='backlog')}">
+          <a ng-href="#/wolof/grays/backlog">
+            <i class="fa fa-bars fa-2x"></i>
+            <div>Backlog</div>
+          </a>
+        </li>
+        <li ng-class="{selected: (route=='sod')}">
+          <a ng-href="#/wolof/grays/sod">
+            <i class="fa fa-list-alt fa-2x"></i>
+            <div>Asssignment</div>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <header class="project-title">{{project.friendlyName}} [{{project.name}}]</header>
+
+    <div ui-view=""></div>

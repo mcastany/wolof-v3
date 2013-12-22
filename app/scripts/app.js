@@ -4,49 +4,55 @@ angular.module('wolofApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute',
+  'ui.router',
   'ui.sortable'
 ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    //
+    // For any unmatched url, redirect to /state1
+    $urlRouterProvider.otherwise('/');
+    //
+    // Now set up the states
+    $stateProvider
+      .state('home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/wolof', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+      .state('project', {
+        url: '/wolof',
+        abstract: true,
+        templateUrl: 'views/navigation.html',
+        controller: 'NavigationCtrl'
       })
-      //Displays a summary of the project. Could be a merge of Kickoff and Project Closure
-      .when('/wolof/:projectName',{
+      .state('project.summary', {
+        url: '/:projectName',
         templateUrl: 'views/summary.html',
         controller: 'SummaryCtrl'
       })
-      //Shows the currrent iteration of the project
-      .when('/wolof/:projectName/backlog', {
+      .state('project.backlog', {
+        url: '/:projectName/backlog',
         templateUrl: 'views/backlog.html',
         controller: 'BacklogCtrl'
       })
-      .when('/wolof/:projectName/backlog/:iterationNumber', {
+      .state('project.backlog.iteration', {
+        url: '/:iterationNumber',
         templateUrl: 'views/backlog.html',
         controller: 'BacklogCtrl'
       })
-      //Shows the delivery map of a particlar project
-      .when('/wolof/:projectName/deliverymap', {
+      .state('project.deliverymap', {
+        url: '/:projectName/deliverymap',
         templateUrl: 'views/deliverymap.html',
         controller: 'DeliverymapCtrl'
       })
-      //Shows the delivery map of a particlar project
-      .when('/wolof/:projectName/deliverymap/:iterationNumber', {
+      .state('project.deliverymap.iteration', {
+        url: '/:iterationNumber',
         templateUrl: 'views/deliverymap.html',
         controller: 'DeliverymapCtrl'
       })
-      //Shows the current assigned stories excluding blocked and completed
-      .when('/wolof/:projectName/sod', {
+      .state('project.sod', {
+        url: '/:projectName/sod',
         templateUrl: 'views/sod.html',
         controller: 'SodCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
   });

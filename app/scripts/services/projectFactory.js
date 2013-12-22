@@ -30,9 +30,11 @@ angular.module('wolofApp').factory('projectFactory', function () {
   };
 
   var getByName = function (name) {
-    for (var i = projects.length - 1; i >= 0; i--) {
-      if (projects[i].name.toLowerCase() === name.toLowerCase()){
-        return projects[i];
+    if (name){
+      for (var i = projects.length - 1; i >= 0; i--) {
+        if (projects[i].name && projects[i].name.toLowerCase() === name.toLowerCase()){
+          return projects[i];
+        }
       }
     }
     return null;

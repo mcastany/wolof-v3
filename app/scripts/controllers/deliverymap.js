@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('wolofApp').controller('DeliverymapCtrl', ['$scope', '$routeParams', 'projectFactory', 'iterationFactory', '$location', '$rootScope', function ($scope, $routeParams, projectFactory, iterationFactory, $location, $rootScope) {
+angular.module('wolofApp').controller('DeliverymapCtrl', ['$scope', '$stateParams', 'projectFactory', 'iterationFactory', '$location', '$rootScope', function ($scope, $stateParams, projectFactory, iterationFactory, $location, $rootScope) {
   $scope.enableRemove = false;
-  $scope.iterationNumber = $routeParams.iterationNumber || -1;
+  $scope.route = 'deliverymap';
+  $scope.iterationNumber = $stateParams.iterationNumber || -1;
   $scope.iterations = iterationFactory.getAll();
 
   $scope.navigateToBacklog = function(iterationNumber) {

@@ -1,7 +1,10 @@
 'use strict';
 
-angular.module('wolofApp').controller('SummaryCtrl', ['$scope', '$routeParams', 'projectFactory', function ($scope) {
+angular.module('wolofApp').controller('SummaryCtrl', ['$scope', '$stateParams', 'projectFactory',  function ($scope) {
   /*$scope, $routeParams, projectFactory*/
+
+  $scope.route = 'summary';
+
   $scope.istories =  [
     ['Completed', 10],
     ['In Progress', 8],

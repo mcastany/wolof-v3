@@ -8,7 +8,7 @@
 				<div> {{ it.from | date:'mediumDate'}}</div>
 				<div> - </div>
 				<div> {{ it.to | date:'mediumDate'}}</div></div>
-			<div class="iteration-content" ui-sortable ng-model="it.features" >
+			<div class="iteration-content" ui-sortable ng-model="it.features">
 				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" w-editable remove-handler="removeFeature(it.number, feature)" property="feature.name"></div>
 			</div>
 			<div class="iteration-content">
