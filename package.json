@@ -53,6 +53,6 @@
   },
   "scripts": {
     "test": "grunt test",
-	"start": "server/server.js"
+	"start": "node server/server.js"
   }
 }
