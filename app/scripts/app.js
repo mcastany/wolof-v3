@@ -5,7 +5,8 @@ angular.module('wolofApp', [
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.sortable'
+  'ui.sortable',
+  'underscore'
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
     //

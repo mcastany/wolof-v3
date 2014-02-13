@@ -16,7 +16,8 @@
     "socket.io-client": "~0.9.16",
     "angular-ui": "~0.4.0",
     "angular-ui-sortable": "~0.10.1",
-    "jquery-ui": "~1.10.3"
+    "jquery-ui": "~1.10.3",
+    "angular-underscore-module": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.0",
