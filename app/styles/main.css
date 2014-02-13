@@ -65,6 +65,8 @@ footer {
 .deliverymap {
   vertical-align: top;
   display: inline-flex;
+  min-height: 200px;
+  min-width: 200px;
 }
 
 .iteration {
@@ -220,6 +222,19 @@ footer {
 .iteration-content .feature .closearea:hover .close-border:hover {
  background: rgba(0, 0, 0, .8);
  z-index: 14;
+}
+
+ul.button-container{
+  list-style: none;
+  display: inline;
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+ul.button-container li{
+  display: inline;
+  margin: 20px;
 }
 /*END ITERATION*/
 

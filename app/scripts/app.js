@@ -25,6 +25,11 @@ angular.module('wolofApp', [
         templateUrl: 'views/navigation.html',
         controller: 'NavigationCtrl'
       })
+      .state('create', {
+        url: '/wolof/create',
+        templateUrl: 'views/create.html',
+        controller: 'CreateCtrl'
+      })
       .state('project.summary', {
         url: '/:projectName',
         templateUrl: 'views/summary.html',
@@ -35,8 +40,8 @@ angular.module('wolofApp', [
         templateUrl: 'views/backlog.html',
         controller: 'BacklogCtrl'
       })
-      .state('project.backlog.iteration', {
-        url: '/:iterationNumber',
+      .state('project.backlogByiteration', {
+        url: '/:projectName/backlog/:iterationNumber',
         templateUrl: 'views/backlog.html',
         controller: 'BacklogCtrl'
       })
@@ -45,8 +50,8 @@ angular.module('wolofApp', [
         templateUrl: 'views/deliverymap.html',
         controller: 'DeliverymapCtrl'
       })
-      .state('project.deliverymap.iteration', {
-        url: '/:iterationNumber',
+      .state('project.deliverymapByiteration', {
+        url: '/:projectName/deliverymap/:iterationNumber',
         templateUrl: 'views/deliverymap.html',
         controller: 'DeliverymapCtrl'
       })

@@ -1,0 +1,26 @@
+<form name="createProject"  ng-submit="addProject()">
+	<div class="form-group">
+		<label for="SortName">Name </label>
+	  	<input id="ShortName" name="ShortName" type="text" ng-model="project.name" required/>
+	</div>
+	<div class="form-group">
+		<label for="LongName">Long Name</label>
+		<input id="LongName" name="LongName" type="text" ng-model="project.description" required/> <br><br>
+	</div>
+	<div class="form-group">
+		<label for="iteration">Iterations</label>
+		<input id="iteration" name="iteration" type="number" ng-model="project.iterations" required/> <br><br>
+	</div>
+	<div class="form-group">
+		<label for="startDate">Start Date</label>
+		<input id="startDate" name="startDate"  type="text" ng-model="project.startDate" required/> <br><br>
+	</div>
+	<div class="form-group">
+		<label for="endDate">End Date</label>	
+		<input id="endDate" name="endDate"  type="text" ng-model="project.endDate" required/> <br><br>
+	</div>
+
+	<div class="form-group">
+		<button type="submit" >Create</button>
+	</div>
+</form>

@@ -19,6 +19,8 @@ angular.module('wolofApp').controller('NavigationCtrl', ['$scope', '$stateParams
   });
 
   if ($stateParams.projectName){
-    $rootScope.project = projectFactory.getByName($stateParams.projectName);
+    projectFactory.getByName($stateParams.projectName).then(function(data){
+      $rootScope.project = data;
+    });
   }
 }]);

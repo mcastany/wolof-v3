@@ -1,55 +1,59 @@
 'use strict';
 
-angular.module('wolofApp').factory('projectFactory', function () {
-  var projects = [{
-    id : 1,
-    name : 'Grays',
-    friendlyName : 'Windows Azure Training Kit',
-    iterations : 10,
-    startDate : new Date(2013, 11, 8),
-    endDate : new Date(2013, 12, 10),
-    team : [
-      { name: 'Marcos Castany' },
-      { name: 'Hernan Meydac' },
-      { name: 'Gabriel Iglesias' },
-      { name: 'Nicolas Bello' }
-    ]
-  }];
-
+angular.module('wolofApp').factory('projectFactory', ['$http', '$q', function ($http, $q) {
   var getAll = function () {
-    return projects;
+    var d = $q.defer();
+    $http.get('/api/projects').
+      success(function(data) {
+        d.resolve(data);
+      });
+    return d.promise;
   };
 
   var get = function(id) {
-    for (var i = projects.length - 1; i >= 0; i--) {
-      if (projects[i].id === id){
-        return projects[i];
-      }
-    }
-    return null;
+    var d = $q.defer();
+    $http.get('/api/projects/' + id).
+      success(function(data) {
+        d.resolve(data);
+      });
+    return d.promise;
   };
 
   var getByName = function (name) {
-    if (name){
-      for (var i = projects.length - 1; i >= 0; i--) {
-        if (projects[i].name && projects[i].name.toLowerCase() === name.toLowerCase()){
-          return projects[i];
-        }
-      }
-    }
-    return null;
+    var d = $q.defer();
+    $http.get('/api/projects/' + name ).
+      success(function(data) {
+        d.resolve(data);
+      });
+    return d.promise;
   };
   
   var add = function(element){
-    projects.push(element);
+    var d = $q.defer();
+    $http.post('/api/projects', element).
+      success(function(data) {
+        d.resolve(data);
+      }).
+      error(function(data, status) {
+        console.log(status);
+        d.resolve(data);
+      });
+    return d.promise;
   };
 
   var remove = function(element){
-    var index = projects.indexOf(element);
-    if (index > -1) {
-      projects.splice(index, 1);
-    }
+    var d = $q.defer();
+    $http.delete('/api/projects/' + element.id).
+      success(function(data) {
+        d.resolve(data);
+      }).
+      error(function(data, status) {
+        console.log(status);
+        d.resolve(data);
+      });
+    return d.promise;
   };
+
   // Public API here
   return {
     getAll: getAll,
@@ -58,4 +62,4 @@ angular.module('wolofApp').factory('projectFactory', function () {
     add: add,
     remove: remove
   };
-});
+}]);

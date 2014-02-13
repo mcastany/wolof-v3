@@ -1,5 +1,6 @@
 // Generated on 2013-12-06 using generator-angular 0.6.0
 'use strict';
+var path = require('path');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -10,30 +11,72 @@
 module.exports = function (grunt) {
 
   // Load grunt tasks automatically
-  require('load-grunt-tasks')(grunt);
+  // require('load-grunt-tasks')(grunt);
 
   // Time how long tasks take. Can help when optimizing build times
-  require('time-grunt')(grunt);
-
+  // require('time-grunt')(grunt);
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  var yeomanConfig = {
+    app: require('./bower.json').appPath || 'app',
+    dist: 'dist'
+  };
   // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
-    yeoman: {
-      // configurable paths
-      app: require('./bower.json').appPath || 'app',
-      dist: 'dist'
+    yeoman: yeomanConfig,
+    express: {
+      options: {
+        // Override node env's PORT
+        port: process.env.PORT || 3000,
+        // Override the command used to start the server.
+        // (e.g. 'coffee' instead of the default 'node' to enable CoffeeScript support)
+        cmd: process.argv[0],
+        // Will turn into: `node path/to/server.js ARG1 ARG2 ... ARGN`
+        args: [ ],
+        // Setting to `false` will effectively just run `node path/to/server.js`
+        background: true,
+        // Called when the spawned server throws errors
+        fallback: function() {},
+        // Override node env's NODE_ENV
+        node_env: undefined,
+        // Consider the server to be "running" after an explicit delay (in milliseconds)
+        // (e.g. when server has no initial output)
+        delay: 0,
+        // Regular expression that matches server output to indicate it is "running"
+        output: '.+',
+        // Set --debug
+        debug: false
+      },
+      dev: {
+        options: {
+          server: path.resolve('./server/server.js'),
+        }
+      },
+      prod: {
+        options: {
+          server: path.resolve('./server/server.js'),
+          node_env: 'production'
+        }
+      },
+      test: {
+        options: {
+          server: path.resolve('./server/server.js'),
+          node_env: 'test'
+        }
+      }
     },
-
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
         files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'],
-        tasks: ['newer:jshint:all']
+        //tasks: ['newer:jshint:all']
+        tasks: ['newer']
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
-        tasks: ['newer:jshint:test', 'karma']
+        //tasks: ['newer:jshint:test', 'karma']
+        tasks: ['newer', 'karma']
       },
       styles: {
         files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
@@ -42,52 +85,31 @@ module.exports = function (grunt) {
       gruntfile: {
         files: ['Gruntfile.js']
       },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
-          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      }
+       express: {
+                files: [
+                    '<%= yeoman.app %>/{,*//*}*.html',
+                    '{.tmp,<%= yeoman.app %>}/styles/{,*//*}*.css',
+                    '{.tmp,<%= yeoman.app %>}/scripts/{,*//*}*.js',
+                    '<%= yeoman.app %>/images/{,*//*}*.{png,jpg,jpeg,gif,webp,svg}',
+                    'server.js',
+                    'server/{,*//*}*.{js,json}',
+                    'server/models/{,*//*}*.{js,json}'
+                ],
+                tasks: ['express:dev'],
+                options: {
+                    livereload: true,
+                    nospawn: true //Without this option specified express won't be reloaded
+                }
+            }
     },
 
-    // The actual grunt server settings
-    connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
-      livereload: {
-        options: {
-          open: true,
-          base: [
-            '.tmp',
-            '<%= yeoman.app %>'
-          ]
+    open: {
+        server: {
+            path: 'http://localhost:<%= express.options.port %>'
         }
-      },
-      test: {
-        options: {
-          port: 9001,
-          base: [
-            '.tmp',
-            'test',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
-      dist: {
-        options: {
-          base: '<%= yeoman.dist %>'
-        }
-      }
     },
 
+    
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -136,10 +158,6 @@ module.exports = function (grunt) {
       }
     },
 
-    
-
-    
-
     // Renames files for browser caching purposes
     rev: {
       dist: {
@@ -183,6 +201,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     svgmin: {
       dist: {
         files: [{
@@ -193,6 +212,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     htmlmin: {
       dist: {
         options: {
@@ -320,14 +340,14 @@ module.exports = function (grunt) {
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+      return grunt.task.run(['build', 'express:dist:keepalive']);
     }
-
+    
     grunt.task.run([
       'clean:server',
       'concurrent:server',
-      'autoprefixer',
-      'connect:livereload',
+      'express:dev',
+      'open',
       'watch'
     ]);
   });
@@ -341,7 +361,7 @@ module.exports = function (grunt) {
     'clean:server',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
+    'express:test',
     'karma'
   ]);
 
@@ -361,7 +381,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('default', [
-    'newer:jshint',
+    'newer',
     'test',
     'build'
   ]);
