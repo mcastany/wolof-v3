@@ -1,4 +1,5 @@
-var Project = require('../models/project').model;
+var Project = require('../models/project').model,
+	Counters = require('../models/counters');
 
 exports.get = function(req, res) {
   Project.find({}, function(err, projects){
