@@ -1,0 +1,58 @@
+<div class="delivery-content">
+	<div class="deliverymap">
+		<div class="iteration" ng-repeat="it in iterations">
+			<div class="iteration-header avoid-selection" ng-class="{selected: (it.number == iterationNumber)}" ng-dblclick="navigateToBacklog(it.number)"> Iteration #{{ it.number }}</div>
+			<div class="iteration-subheader">
+				<div> {{ it.from | date:'mediumDate'}}</div>
+				<div> - </div>
+				<div> {{ it.to | date:'mediumDate'}}</div></div>
+			<div class="iteration-content" ui-sortable="" ng-model="it.features">
+				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" ng-click="expand(feature)">
+					<div ng-show="feature.expand">
+					  	<form ng-submit="editFeature(it.number, feature.id, feature.name, feature.status)">
+					  		<div ng-show="!feature.edit">{{feature.name}}</div>
+						  	<div ng-show="feature.edit">
+						  		<input type="text" ng-model="feature.name">
+						  	</div>
+						  	<ul class="button-container">
+						  		<li>
+						  			<a ng-click="navigateToBacklog(it.number, feature.id)">
+						  				<i class="fa fa-bars">
+						  			</a>
+						  		</li>
+						  		<li>
+						  			<a ng-show="!feature.edit" ng-click="enableEdit(feature)">
+						  				<i class="fa fa-edit">
+						  			</a>
+						  			<button type="submit" ng-show="feature.edit">
+						  				<i class="fa fa-floopy-o">
+						  			</button>
+						  		</li>
+						  		<li>
+						  			<a ng-click="removeFeature(it.number, feature.id)">
+						  				<i class="fa fa-trash-o">
+						  			</a>
+						  		</li>
+						  	</ul>
+					  	</form>
+					</div>
+					<div ng-hide="feature.expand"> 
+    				  	<span>{{feature.name}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="iteration-content">
+				<div class="feature template avoid-selection" ng-click="addFeature(it.number, 'Create Feature')">Create Feature</div>
+			</div>
+		</div>
+		<div class="iteration">
+			<div class="iteration-header iteration-template avoid-selection" ng-click="addIteration()">
+				<i class="fa fa-plus"></i>		
+			</div>
+		</div>
+	</div>
+
+	<div class="iteration-references">
+
+	</div>
+</div>

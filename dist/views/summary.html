@@ -1,0 +1,79 @@
+<div class="summary-container">
+	<div class="table">
+        <div class="table-row">
+            <div class="table-cell first-row">
+            	<!--Firts row, first cell-->
+            	<div ng-hide="true">
+	            	<div class="iteration-box">
+						<div class="iteration-number">{{ project.iterations}}</div>
+						<div class="iteration-title">Iterations</div>
+					</div>
+				</div>
+				<div class="dates">
+					<div class="date">
+						<div class="date-title">{{ project.startDate | date:'MMMM' }}</div>
+						<div class="date-content">
+							<div class="date-content-day">{{ project.startDate | date:'dd' }}</div>
+							<div class="date-content-year"> {{ project.startDate | date:'yyyy' }}</div>
+						</div>
+					</div>
+					<div class="date">
+						<div class="date-title">{{ project.endDate | date:'MMMM' }}</div>
+						<div class="date-content">
+							<div class="date-content-day">{{ project.endDate | date:'dd' }}</div>
+							<div class="date-content-year"> {{ project.endDate | date:'yyyy' }}</div>
+						</div>
+					</div>
+				</div>
+				<div class="project-description">
+					<div class="project-description-row">
+						<span class="project-description-title">Name: </span>
+						<span>{{project.name}}</span>
+					</div>
+					<div class="project-description-row">
+						<span class="project-description-title">Long Name: </span>
+						<span>{{project.friendlyName}}</span>
+					</div>
+				</div>
+				<div class="project-numbers">
+					<div class="project-numbers-title">Overall Status</div>
+					<div class="project-description-row">
+						<span class="project-description-title">Pending: </span>
+						<span>99 Hs.</span>
+					</div>
+					<div class="project-description-row">
+						<span class="project-description-title">In Progress: </span>
+						<span>99 Hs.</span>
+					</div>
+					<div class="project-description-row">
+						<span class="project-description-title">Completed: </span>
+						<span>99 Hs.</span>
+					</div>
+					<div class="project-description-row">
+						<span class="project-description-title">Blocked: </span>
+						<span>99 Hs.</span>
+					</div>
+				</div>
+				<div class="team">
+					<div class="team-member-title">Team</div>
+					<div class="team-member-image" ng-repeat="member in project.team">
+						{{ member.name }}
+					</div>
+				</div>
+			</div>
+            <div class="table-cell second-row">
+				<hg-column-chart items="barChartData" title="Stories per Iteartion" y-axis="Amount" id="StoriesGraphIteartion"></hg-column-chart>			            	
+            </div>
+            <div class="table-cell">
+				<div class="graph-container">
+					<hg-pie-chart items="istories" title="Iteration Stories" id="StoriesIteartion"></hg-pie-chart>
+				</div>
+				<div class="graph-container">
+					<hg-pie-chart items="pstories" title="Project Stories" id="StoriesProject"></hg-pie-chart>
+				</div>
+            </div>
+        </div>
+    </div>
+	<div>
+	</div>
+</div>
