@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('wolofApp').factory('socket', function ($rootScope) {
-  var socket = io.connect('http://localhost:3000/');
+angular.module('wolofApp').factory('socket', ['$rootScope', 'socketEndpoint', function ($rootScope, socketEndpoint) {
+  var socket = io.connect(socketEndpoint);
   return {
     on: function (eventName, callback) {
       socket.on(eventName, function () {  
@@ -22,4 +22,4 @@ angular.module('wolofApp').factory('socket', function ($rootScope) {
       })
     }
   };
-});
+}]);

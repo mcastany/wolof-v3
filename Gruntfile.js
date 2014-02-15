@@ -1,6 +1,7 @@
 // Generated on 2013-12-06 using generator-angular 0.6.0
 'use strict';
-var path = require('path');
+var path = require('path'),
+    globalConfig = require('./server/config');
 
 // # Globbing
 // for performance reasons we're only matching one level down:
@@ -16,6 +17,9 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   // require('time-grunt')(grunt);
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+  grunt.loadNpmTasks('grunt-ng-constant')
+  
   var yeomanConfig = {
     app: require('./bower.json').appPath || 'app',
     dist: 'dist'
@@ -25,10 +29,34 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: yeomanConfig,
+
+    ngconstant: {
+      options: {
+        space: '  '
+      },
+      dev: {
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '"use strict";\n\n <%= __ngModule %>',
+        name: 'config',
+        constants: {
+          socketEndpoint: 'http://localhost:3000/'
+        }
+      },
+      prod: {
+        dest: '<%= yeoman.dist %>/scripts/config.js',
+        wrap: '"use strict";\n\n <%= __ngModule %>',
+        name: 'config',
+        constants: {
+          socketEndpoint: 'http://wolof-v3.herokuapp.com/'
+        }
+      }
+    },
+    
+
     express: {
       options: {
         // Override node env's PORT
-        port: process.env.PORT || 3000,
+        port: globalConfig["development"].PORT,
         // Override the command used to start the server.
         // (e.g. 'coffee' instead of the default 'node' to enable CoffeeScript support)
         cmd: process.argv[0],
@@ -51,18 +79,22 @@ module.exports = function (grunt) {
       dev: {
         options: {
           server: path.resolve('./server/server.js'),
+          node_env: 'development',
+          port: globalConfig["development"].PORT
         }
       },
       prod: {
         options: {
           server: path.resolve('./server/server.js'),
-          node_env: 'production'
+          node_env: 'production',
+          port: globalConfig["production"].PORT
         }
       },
       test: {
         options: {
           server: path.resolve('./server/server.js'),
-          node_env: 'test'
+          node_env: 'testing',
+          port: globalConfig["testing"].PORT
         }
       }
     },
@@ -109,7 +141,6 @@ module.exports = function (grunt) {
         }
     },
 
-    
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
@@ -345,6 +376,7 @@ module.exports = function (grunt) {
     
     grunt.task.run([
       'clean:server',
+      'ngconstant:dev',
       'concurrent:server',
       'express:dev',
       'open',
@@ -359,6 +391,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'ngconstant:dev',
     'concurrent:test',
     'autoprefixer',
     'express:test',
@@ -367,6 +400,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:prod',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',

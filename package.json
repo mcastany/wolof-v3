@@ -6,7 +6,8 @@
     "express": "~3.4.7",
     "mongoose": "~3.8.3",
     "grunt-express-server": "~0.4.11",
-    "socket.io": "~0.9.16"
+    "socket.io": "~0.9.16",
+    "grunt-ng-constant": "~0.4.8"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -53,6 +54,6 @@
   },
   "scripts": {
     "start": "node server/server.js",
-	"test": "grunt test"
+    "test": "grunt test"
   }
 }
