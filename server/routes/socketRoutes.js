@@ -197,7 +197,12 @@ var iterationHelper = (function(){
 
 module.exports = function (server) {
   var io = require('socket.io').listen(server);
-
+  // assuming io is the Socket.IO server object
+  io.configure(function () { 
+    io.set("transports", ["xhr-polling"]); 
+    io.set("polling duration", 10); 
+  });
+  
   io.sockets.on('connection', function(socket){
     var userCountDM = 0,
         userCountBG = 0,
