@@ -12,25 +12,25 @@
 					  	<form ng-submit="editFeature(it.number, feature.id, feature.name, feature.status)">
 					  		<div ng-show="!feature.edit">{{feature.name}}</div>
 						  	<div ng-show="feature.edit">
-						  		<input type="text" ng-model="feature.name"/>
+						  		<input type="text" ng-model="feature.name"></input>
 						  	</div>
 						  	<ul class="button-container">
 						  		<li>
 						  			<a ng-click="navigateToBacklog(it.number, feature.id)">
-						  				<i class="fa fa-bars"/>
+						  				<i class="fa fa-bars" ></i>		
 						  			</a>
 						  		</li>
 						  		<li>
 						  			<a ng-show="!feature.edit" ng-click="enableEdit(feature)">
-						  				<i class="fa fa-edit" />
+						  				<i class="fa fa-edit"></i>		
 						  			</a>
 						  			<button type="submit" ng-show="feature.edit">
-						  				<i class="fa fa-floopy-o" />
+						  				<i class="fa fa-floopy-o"></i>		
 						  			</button>
 						  		</li>
 						  		<li>
 						  			<a ng-click="removeFeature(it.number, feature.id)">
-						  				<i class="fa fa-trash-o" />
+						  				<i class="fa fa-trash-o" ></i>		
 						  			</a>
 						  		</li>
 						  	</ul>
