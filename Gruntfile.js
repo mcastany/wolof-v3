@@ -43,7 +43,7 @@ module.exports = function (grunt) {
         }
       },
       prod: {
-        dest: '<%= yeoman.dist %>/scripts/config.js',
+        dest: '<%= yeoman.app %>/scripts/config.js',
         wrap: '"use strict";\n\n <%= __ngModule %>',
         name: 'config',
         constants: {
@@ -52,7 +52,6 @@ module.exports = function (grunt) {
       }
     },
     
-
     express: {
       options: {
         // Override node env's PORT
