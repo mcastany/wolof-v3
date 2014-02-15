@@ -85,9 +85,6 @@ angular.module('wolofApp').factory('socketDeliveryMap', ['socket', function (soc
         status: status
       };
       socket.emit('delivery:edit:feature', data);
-      if (callback && typeof(callback) === "function") {  
-        callback({name: name, status: status});
-      }
    };
 
    var onFeatureEdited = function(delegate){
