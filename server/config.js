@@ -13,7 +13,7 @@ config["testing"] = {
 	PORT : process.env.PORT || 3000
 };
 
-config["Production"] = {
+config["production"] = {
 	connectionString : 'mongodb://wolof:Passw0rd!@troup.mongohq.com:10099/wolof',
 	staticFiles : path.join(__dirname, '../dist'),
 	PORT : process.env.PORT || 3000

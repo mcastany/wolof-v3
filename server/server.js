@@ -25,7 +25,7 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use('/', express.static(config[env].staticFiles)); 
 
-if ('Production' != env) {
+if ('production' != env) {
     app.use(express.errorHandler());
 }
 
