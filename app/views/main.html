@@ -1,8 +1,9 @@
- <ul>
-	<li ng-repeat="project in projects">
+ <spinner  ng-hide="projects"></spinner>
+ <ul class="project-selector">
+ 	<li ng-repeat="project in projects">
 		<a href="#/wolof/{{project.name.toLowerCase()}}">{{project.name}}</a>
 	</li>
-	<li ng-click="newProjectDialog()">
+	<li ng-show="projects" ng-click="newProjectDialog()">
 		<a ng-href="#/wolof/create">Create Project</a>
 	</li>
 </ul>

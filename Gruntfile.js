@@ -101,8 +101,10 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js'],
-        //tasks: ['newer:jshint:all']
-        tasks: ['newer']
+        tasks: ['newer'],
+        options: {
+          livereload: true
+        }
       },
       jsTest: {
         files: ['test/spec/{,*/}*.js'],
@@ -129,7 +131,7 @@ module.exports = function (grunt) {
                 tasks: ['express:dev'],
                 options: {
                     livereload: true,
-                    nospawn: true //Without this option specified express won't be reloaded
+                    spawn: false,
                 }
             }
     },

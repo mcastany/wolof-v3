@@ -33,6 +33,22 @@
 						  				<i class="fa fa-trash-o"></i>		
 						  			</a>
 						  		</li>
+						  		<li ng-show="feature.edit">
+						  			<ul>
+						  				<li>
+						  					<input type="radio" name="status" value="pending" ng-model="feature.status">Pending
+						  				</li>
+							  			<li>
+							  				<input type="radio" name="status" value="progress" ng-model="feature.status">In Progress
+							  			</li>
+						  				<li>
+						  					<input type="radio" name="status" value="blocked" ng-model="feature.status">Blocked
+						  				</li>
+						  				<li>
+						  					<input type="radio" name="status" value="completed" ng-model="feature.status">Completed		
+						  				</li>
+						  			</ul>
+						  		</li>
 						  	</ul>
 					  	</form>
 					</div>

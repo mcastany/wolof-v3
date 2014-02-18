@@ -2,8 +2,8 @@ var express = require('express')
     , http = require('http')
     , config = require('./config')
     , mongoose = require('mongoose')
-    , gzippo = require('gzippo')
-//Routes
+    , gzippo = require('gzippo') 
+//Route
     , projectRoutes = require('./routes/projectRoutes')
     , socketInit = require('./routes/socketRoutes'); 
 

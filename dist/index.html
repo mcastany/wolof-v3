@@ -13,7 +13,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" href="styles/b1e65081.main.css"/>
+        <link rel="stylesheet" href="styles/2c59468d.main.css"/>
 </head>
   <body ng-app="wolofApp">
     <!--[if lt IE 7]>
@@ -50,6 +50,24 @@
         <script src="bower_components/highcharts/highcharts.js"></script>
         <script src="scripts/70cee746.modules.js"></script>
 
-        <script src="scripts/855e39de.scripts.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/config.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/backlog.js"></script>
+        <script src="scripts/controllers/deliverymap.js"></script>
+        <script src="scripts/controllers/Summary.js"></script>
+        <script src="scripts/controllers/SOD.js"></script>
+		<script src="scripts/controllers/navigation.js"></script>
+		<script src="scripts/controllers/create.js"></script>
+        <script src="scripts/services/projectFactory.js"></script>
+        <script src="scripts/services/storyFactory.js"></script>
+        <script src="scripts/services/iterationFactory.js"></script>
+		<script src="scripts/services/socket.js"></script>
+        <script src="scripts/services/socketDeliveryMap.js"></script>
+        <script src="scripts/directives/hgPieChart.js"></script>
+        <script src="scripts/directives/hgColumnChart.js"></script>
+        <script src="scripts/directives/spinner.js"></script>
+        <!-- endbuild -->
 </body>
 </html>

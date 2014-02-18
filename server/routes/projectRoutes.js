@@ -6,7 +6,7 @@ exports.get = function(req, res) {
    if (err) {
         return res.json(err);
     }
-
+    
     res.json(projects);
   });
 };
