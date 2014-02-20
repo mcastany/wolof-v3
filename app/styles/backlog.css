@@ -1,0 +1,32 @@
+.backlog {
+  list-style-type: none;
+}
+
+.backlog-item {
+  display: block;
+  border: 1px solid black;
+  padding: 5px;
+  border-top: 0px;
+  width: 400px;
+}
+
+.backlog-item:first-child{
+  border-top: 1px solid black;
+}
+
+.backlog-item.pending{
+  background-color: rgb(217, 217, 217);
+}
+
+.backlog-item.completed{
+  background-color: rgb(112,173,71);
+}
+
+.backlog-item.blocked{
+  background-color: rgb(255,0,0);
+}
+
+.backlog-item.progress{
+  background-color: rgb(255,255,0);
+}
+

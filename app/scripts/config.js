@@ -2,6 +2,6 @@
 
  angular.module("config", [])
 
-.constant("socketEndpoint", "http://wolof-v3.herokuapp.com/")
+.constant("socketEndpoint", "http://localhost:3000/")
 
 ;

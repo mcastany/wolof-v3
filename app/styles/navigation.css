@@ -1,0 +1,35 @@
+nav.main-navigation{
+
+}
+
+nav.main-navigation ul{
+  list-style-type: none;
+  text-align: center;
+  font-size: 1.4em;
+}
+
+nav.main-navigation ul li{
+  display: inline-block;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+nav.main-navigation ul li a{
+  color:black;
+  text-decoration: none;
+  display: block;
+}
+
+nav.main-navigation ul li.selected a{
+  color:rgb(49, 145, 175);
+}
+
+nav.main-navigation ul li a i {
+
+}
+
+
+nav.main-navigation ul li a div {
+  display: block;
+}

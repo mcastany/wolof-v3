@@ -1,0 +1,333 @@
+.deliverymap {
+    vertical-align: top;
+    display: inline-flex;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+.iteration {
+    width: 200px;
+    -border: 1px solid black;
+    float: left;
+}
+
+.iteration-template {
+    display: none;
+}
+
+.deliverymap:hover .iteration .iteration-header.iteration-template {
+    display: block;
+    width: 10%;
+    opacity: 0.4;
+    color: gray;
+    border-color: gray;
+    cursor: pointer;
+}
+
+    .deliverymap:hover .iteration .iteration-header.iteration-template:hover {
+        opacity: 0.8;
+    }
+
+.iteration-header {
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+    color: rgb(0, 176, 240);
+    background-color: white;
+    font-size: 1.2em;
+}
+
+    .iteration-header.selected {
+        background-color: rgb(0, 176, 240);
+        color: white;
+    }
+
+.iteration-subheader {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid black;
+    background-color: rgb(217, 217, 217);
+    font-size: 0.8em;
+    text-align: center;
+}
+
+    .iteration-subheader div {
+        display: inline;
+    }
+
+.iteration-note {
+    display: inline-block;
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid black;
+    background-color: rgb(255, 217, 102);
+    font-size: 0.8em;
+    text-align: center;
+}
+
+.iteration-content {
+    margin: 0 1px;
+}
+
+    .iteration-content .feature {
+        margin-top: 10px;
+        border: 1px solid gray;
+        font-size: 0.8em;
+        text-align: center;
+        vertical-align: middle;
+        position: relative;
+        height: 25px;
+    }
+
+        .iteration-content .feature input {
+            padding-bottom: 5px;
+            margin: 0px;
+            border: 1px solid green;
+            box-sizing: border-box;
+            text-align: center;
+            color: black;
+            background: white;
+            width: 100%;
+            height: 100%;
+            font-family: "Segoe UI";
+        }
+
+        .iteration-content .feature .feature-name,
+        .iteration-content .feature .feature-form {
+            position: absolute;
+            width: calc(100% - 30px);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            z-index: 1004;
+        }
+
+        .iteration-content .feature .feature-name {
+            padding-top: 2px;
+            height: calc(100% - 2px);
+        }
+
+        .iteration-content .feature .feature-form {
+            padding: 0;
+            margin: auto;
+            height: 100%;
+        }
+
+.completed:not(input) {
+    background-color: rgb(112,173,71);
+    color: white;
+}
+
+.completed:not(input):hover {
+    background-color: rgb(112,173,71);
+}
+
+.completed input {
+    border-color: rgb(112,173,71);
+}
+
+.pending:not(input) {
+    background-color: rgb(217, 217, 217);
+    color: black;
+}
+
+.pending:not(input):hover {
+    background-color: rgb(217, 217, 217);
+}
+
+.pending input {
+    border-color: rgb(217, 217, 217);
+}
+
+.progress:not(input) {
+    background-color: rgb(255,255,0);
+    color: black;
+}
+
+.progress:not(input):hover {
+    background-color: rgb(255,255,0);
+}
+
+.progress input {
+    border-color: rgb(255,255,0);
+}
+
+.blocked:not(input) {
+    background-color: rgb(255,0,0);
+    color: white;
+}
+
+.blocked:not(input):hover {
+    background-color: rgb(255,0,0);
+}
+
+.blocked input {
+    border-color: rgb(255,0,0);
+}
+
+.iteration .feature.template {
+    display: none;
+}
+
+.iteration:hover .feature.template {
+    display: block;
+}
+
+.iteration-content .feature.template {
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+    .iteration-content .feature.template:hover {
+        opacity: 0.8;
+        cursor: pointer;
+    }
+
+.iteration-content .feature .closearea {
+    color: transparent;
+    position: absolute;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+}
+
+    .iteration-content .feature .closearea:hover .close-border {
+        background: rgba(0, 0, 0, .4);
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        padding: 0px;
+        margin: 0px;
+        border: 1px solid black;
+        border-radius: 6px;
+        width: 12px;
+        height: 12px;
+        font-size: 8px;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        vertical-align: middle;
+        cursor: pointer;
+        z-index: 12;
+    }
+
+        .iteration-content .feature .closearea:hover .close-border:hover {
+            background: rgba(0, 0, 0, .8);
+            z-index: 14;
+        }
+
+ul.button-container {
+    list-style: none;
+    display: inline;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+    ul.button-container > li {
+        display: inline;
+        margin: 20px;
+    }
+
+        ul.button-container > li > ul {
+            list-style: none;
+        }
+
+            ul.button-container > li > ul > li {
+                display: block;
+                text-align: left;
+            }
+
+ul.dropdown-closed,
+ul.dropdown-open {
+    width: calc(100% - 30px);
+    position: absolute;
+    top: 0px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+    ul.dropdown-closed li {
+        z-index: 1001;
+    }
+
+    ul.dropdown-open li {
+        border: 1px solid black;
+    }
+
+.feature-options li {
+    position: absolute;
+    width: 100%;
+    height: 25px;
+    transition: all 300ms ease;
+    -webkit-transition: all 300ms ease;
+    cursor: pointer;
+}
+
+ul.dropdown-closed li.one {
+    top: 0px;
+}
+
+ul.dropdown-open li.one {
+    top: 27px;
+    z-index: 1104;
+}
+
+ul.dropdown-closed li.two {
+    top: 0px;
+}
+
+ul.dropdown-open li.two {
+    top: 55px;
+    z-index: 1103;
+}
+
+ul.dropdown-closed li.three {
+    top: 0px;
+}
+
+ul.dropdown-open li.three {
+    top: 83px;
+    z-index: 1102;
+}
+
+ul.dropdown-closed li.four {
+    top: 0px;
+}
+
+ul.dropdown-open li.four {
+    top: 111px;
+    z-index: 1101;
+}
+
+.feature-readonly {
+    position: relative;
+    height: 25px;
+}
+
+    .feature-readonly .feature-name {
+        position: absolute;
+        width: 100%;
+        height: 25px;
+    }
+
+.feature:hover .arrow-closed,
+.feature:hover .arrow-open {
+    float: right;
+    margin-right: 5px;
+    height: 100%;
+    margin-top: 2px;
+    cursor: pointer;
+}
+
+.arrow-closed:after {
+    content: '\25BC';
+}
+
+.arrow-open:after {
+    content: '\25B2';
+}

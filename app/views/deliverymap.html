@@ -7,54 +7,55 @@
 				<div> - </div>
 				<div> {{ it.to | date:'mediumDate'}}</div></div>
 			<div class="iteration-content" ui-sortable ng-model="it.features">
-				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features" ng-click="expand(feature)">
-					<div ng-show="feature.expand">
-					  	<form ng-submit="editFeature(it.number, feature.id, feature.name, feature.status)">
-					  		<div ng-show="!feature.edit">{{feature.name}}</div>
-						  	<div ng-show="feature.edit">
-						  		<input type="text" ng-model="feature.name"></input>
-						  	</div>
-						  	<ul class="button-container">
-						  		<li>
-						  			<a ng-click="navigateToBacklog(it.number, feature.id)">
-						  				<i class="fa fa-bars" ></i>		
-						  			</a>
-						  		</li>
-						  		<li>
-						  			<a ng-show="!feature.edit" ng-click="enableEdit(feature)">
-						  				<i class="fa fa-edit"></i>		
-						  			</a>
-						  			<button type="submit" ng-show="feature.edit">
-						  				<i class="fa fa-floopy-o"></i>		
-						  			</button>
-						  		</li>
-						  		<li>
-						  			<a ng-click="removeFeature(it.number, feature.id)">
-						  				<i class="fa fa-trash-o" ></i>		
-						  			</a>
-						  		</li>
-						  		<li ng-show="feature.edit">
-						  			<ul>
-						  				<li>
-						  					<input type="radio" name="status" value="pending" ng-model="feature.status">Pending</input>
-						  				</li>
-							  			<li>
-							  				<input type="radio" name="status" value="progress" ng-model="feature.status">In Progress</input>
-							  			</li>
-						  				<li>
-						  					<input type="radio" name="status" value="blocked" ng-model="feature.status">Blocked</input>
-						  				</li>
-						  				<li>
-						  					<input type="radio" name="status" value="completed" ng-model="feature.status">Completed</input>		
-						  				</li>
-						  			</ul>
-						  		</li>
-						  	</ul>
-					  	</form>
-					</div>
-					<div ng-hide="feature.expand"> 
-    				  	<span>{{feature.name}}</span>
-					</div>
+				<div class="feature" ng-class="feature.status" ng-repeat="feature in it.features">
+					<!--<ul class="button-container">
+					  		<li>
+					  			<a ng-click="navigateToBacklog(it.number, feature.id)">
+					  				<i class="fa fa-bars" ></i>		
+					  			</a>
+					  		</li>
+					  		<li>
+					  			<a ng-show="!feature.edit" ng-click="enableEdit(feature)">
+					  				<i class="fa fa-edit"></i>		
+					  			</a>
+					  			<button type="submit" ng-show="feature.edit">
+					  				<i class="fa fa-floopy-o"></i>		
+					  			</button>
+					  		</li>
+					  		<li>
+					  			<a ng-click="removeFeature(it.number, feature.id)">
+					  				<i class="fa fa-trash-o" ></i>		
+					  			</a>
+					  		</li>
+					  		<li ng-show="feature.edit">
+					  			<ul>
+					  				<li>
+					  					<input type="radio" name="status" value="pending" ng-model="feature.status">Pending</input>
+					  				</li>
+						  			<li>
+						  				<input type="radio" name="status" value="progress" ng-model="feature.status">In Progress</input>
+						  			</li>
+					  				<li>
+					  					<input type="radio" name="status" value="blocked" ng-model="feature.status">Blocked</input>
+					  				</li>
+					  				<li>
+					  					<input type="radio" name="status" value="completed" ng-model="feature.status">Completed</input>		
+					  				</li>
+					  			</ul>
+					  		</li></ul>-->
+					<div ng-click="enableEdit(feature)" class="feature-name" ng-class="feature.status" ng-show="!feature.edit">{{feature.name}}</div>
+					<form 	class="feature-form" ng-class="feature.status"
+							ng-submit="editFeature(it.number, feature.id, feature.name, feature.status)"  
+							ng-show="feature.edit">
+						<input type="text" ng-model="feature.name"></input>
+					</form>
+					<div ng-class="!open ? 'arrow-closed' : 'arrow-open'" ng-click="open = !open"></div>
+					<ul class="feature-options" ng-class="!open ? 'dropdown-closed' : 'dropdown-open'">
+				        <li ng-click="editFeature(it.number, feature.id, feature.name, 'pending')" class="one pending">Pending</li>
+				        <li ng-click="editFeature(it.number, feature.id, feature.name, 'progress')" class="two progress">In Progress</li>
+				        <li ng-click="editFeature(it.number, feature.id, feature.name, 'blocked')" class="three blocked">Blocked</li>
+				        <li ng-click="editFeature(it.number, feature.id, feature.name, 'completed')" class="four completed">Completed</li>
+					</ul>
 				</div>
 			</div>
 			<div class="iteration-content">

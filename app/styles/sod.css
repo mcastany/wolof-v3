@@ -1,0 +1,21 @@
+.team-assignment{
+
+}
+  
+.team-member p{
+  font-weight: bold;
+}
+
+.assignment{
+
+}
+
+.status.progress{
+  color:rgb(223, 117, 20);
+  font-weight: bold;
+}
+
+.status.pending{
+  color:rgb(49, 145, 175);
+  font-weight: bold;
+}
